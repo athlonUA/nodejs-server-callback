@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Some title</title>
+    <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#send_link").click(function (e) {
+                e.preventDefault();
+
+                var data = {
+                    title: "title",
+                    message: "message"
+                };
+
+                $.ajax({
+                    type: "POST",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    url: "http://localhost:3000/endpoint",
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <a href="#" id="send_link">Send</a>
+</body>
+</html>
